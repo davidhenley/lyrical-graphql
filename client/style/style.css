@@ -1,0 +1,9 @@
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collection-item .material-icons {
+  cursor: pointer;
+}
