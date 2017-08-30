@@ -15,8 +15,13 @@ class SongList extends Component {
     return this.props.data.songs.map(({ id, title }) => {
       return (
         <li key={id} className="collection-item">
-          <div><Link to={`/songs/${id}`}>{title}</Link></div>
-          <div><i className="material-icons" onClick={() => this.handleDelete(id)}>delete</i></div>
+          <Link to={`/songs/${id}`}>{title}</Link>
+          <i
+            className="material-icons"
+            onClick={() => this.handleDelete(id)}
+          >
+            delete
+          </i>
         </li>
       );
     });
@@ -24,7 +29,7 @@ class SongList extends Component {
 
   render() {
     if (this.props.data.loading) {
-      return <div>Loading...</div>
+      return null;
     }
 
     return (
