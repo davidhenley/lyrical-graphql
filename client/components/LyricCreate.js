@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
-import { fetchSong } from '../queries';
 
 class LyricCreate extends Component {
   state = {
@@ -15,8 +14,7 @@ class LyricCreate extends Component {
     const { songId } = this.props;
 
     this.props.mutate({
-      variables: { content, songId },
-      refetchQueries: [{ query: fetchSong, variables: { id: songId }}]
+      variables: { content, songId }
     }).then(() => this.setState({ content: '' }));
   }
 
@@ -38,6 +36,7 @@ const mutation = gql`
     addLyricToSong(content: $content, songId: $songId) {
       id
       lyrics {
+        id
         content
       }
     }
